@@ -21,7 +21,7 @@ BACKGROUND_MODE = 'cover'           # choose 'cover' or 'contain'
 def fetch_player_info(uid: str):
     if not uid:
         return None
-    player_info_url = f"http://203.57.85.58:2035/player-info?uid={uid}&key=@yashapis"
+    player_info_url = f"https://free-fire-official-info-api-by-ajay.vercel.app/accinfo?uid={uid}&region=ind"
     try:
         resp = session.get(player_info_url, timeout=IMAGE_TIMEOUT)
         resp.raise_for_status()
@@ -55,7 +55,7 @@ def outfit_image():
     if player_data is None:
         return jsonify({'error': 'Failed to fetch player info'}), 500
 
-    outfit_ids = player_data.get("profileInfo", {}).get("clothes", []) or []
+    outfit_ids = player_data.get("profileInfo", {}).get("equippedSkills", []) or []
 
     required_starts = ["211", "214", "211", "203", "204", "205", "203"]
     fallback_ids = ["211000000", "214000000", "208000000", "203000000", "204000000", "205000000", "212000000"]
@@ -69,8 +69,7 @@ def outfit_image():
                 str_oid = str(oid)
             except Exception:
                 continue
-            if str_oid.startswith(code) and str_oid not in used_ids:
-                matched = str_oid
+            if str_oid     matched = str_oid
                 used_ids.add(str_oid)
                 break
         if matched is None:

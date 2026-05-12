@@ -12,7 +12,7 @@ session = requests.Session()
 # --- Configuration ---
 API_KEY = "AJAY"             # Expected API key
 BACKGROUND_FILENAME = "outfit.png"  # local background image (put this next to app.py)
-IMAGE_TIMEOUT = 8                   # seconds for HTTP requests
+IMAGE_TIMEOUT = 100                  # seconds for HTTP requests
 CANVAS_SIZE = (800, 800)            # final image (width, height) or None to use background size
 # BACKGROUND_MODE: 'contain' keeps entire background visible (letterbox),
 # 'cover' fills canvas and crops overflow (recommended for your wide image).
